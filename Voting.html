@@ -1,83 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Football Fan Poll</title>
-  <meta charset="UTF-8">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 50px;
-    }
-    button {
-      padding: 10px 20px;
-      margin-top: 10px;
-      font-size: 16px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>My Small Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
 
-<h1>⚽ Football Fan Poll</h1>
-<h3>Who has more fans?</h3>
+<header>
+    <h1>Welcome to My Website</h1>
+    <p>A simple HTML website</p>
+</header>
 
-<form id="pollForm">
-  <input type="radio" name="player" value="Ronaldo" required> Cristiano Ronaldo<br><br>
-  <input type="radio" name="player" value="Messi"> Lionel Messi<br><br>
-  <input type="radio" name="player" value="Neymar"> Neymar Jr<br><br>
+<nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+</nav>
 
-  <button type="submit">Vote</button>
-</form>
+<div class="container">
+    <div class="card">
+        <h2>About Me</h2>
+        <p>This is a small sample website created using HTML and CSS.</p>
+    </div>
 
-<p id="message"></p>
+    <div class="card">
+        <h2>My Project</h2>
+        <p>Smart Dustbin using IR sensor for automatic lid opening.</p>
+    </div>
+</div>
 
-<h3>📊 Live Results</h3>
-<p>Ronaldo: <span id="ronaldo">0</span></p>
-<p>Messi: <span id="messi">0</span></p>
-<p>Neymar: <span id="neymar">0</span></p>
-
-<script>
-  const form = document.getElementById("pollForm");
-  const message = document.getElementById("message");
-
-  // Show stored results
-  function updateResults() {
-    document.getElementById("ronaldo").innerText =
-      localStorage.getItem("Ronaldo") || 0;
-    document.getElementById("messi").innerText =
-      localStorage.getItem("Messi") || 0;
-    document.getElementById("neymar").innerText =
-      localStorage.getItem("Neymar") || 0;
-  }
-
-  updateResults();
-
-  // Prevent multiple voting
-  if (localStorage.getItem("fanVoted") === "yes") {
-    form.style.display = "none";
-    message.innerText = "You have already voted 🙌";
-  }
-
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const selected = document.querySelector('input[name="player"]:checked');
-    if (!selected) return;
-
-    const player = selected.value;
-
-    let count = localStorage.getItem(player);
-    count = count ? Number(count) + 1 : 1;
-    localStorage.setItem(player, count);
-
-    localStorage.setItem("fanVoted", "yes");
-
-    message.innerText = "Thanks for voting! ⚽🔥";
-    form.style.display = "none";
-
-    updateResults();
-  });
-</script>
+<footer>
+    <p>© 2026 My Website</p>
+</footer>
 
 </body>
-  </html>
+</html>
